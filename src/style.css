@@ -1,0 +1,541 @@
+/* ==========================================================================
+   Word Imposter — global styles
+   Palette, shape language, and typography per the v1 design spec, plus the
+   native-app-feel CSS restrictions (touch-action, user-select, overscroll,
+   callout suppression) that apply globally.
+   ========================================================================== */
+
+:root {
+  --crimson: #a31621;
+  --crimson-20: rgba(163, 22, 33, 0.2);
+  --crimson-10: rgba(163, 22, 33, 0.1);
+  --beige: #f0e4d0;
+  --text: #2b1e1a;
+  --text-muted: #6b5d52;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.15);
+  --radius-button: 16px;
+  --radius-card: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--beige);
+  color: var(--text);
+  font-family: "Nunito", "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+  font-size: 16px;
+  /* Native-app-feel restrictions */
+  touch-action: manipulation;
+  overscroll-behavior-y: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
+  position: relative;
+}
+
+.screen--centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+  min-height: 56px;
+  min-width: 48px;
+  border-radius: var(--radius-button);
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  touch-action: manipulation;
+}
+
+.btn-primary {
+  background: var(--crimson);
+  color: var(--beige);
+}
+
+.btn-secondary {
+  background: var(--beige);
+  color: var(--crimson);
+  border-color: var(--crimson);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* ---- Back chevron ---- */
+
+.back-button {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  color: var(--crimson);
+  font-size: 28px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Typography ---- */
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--crimson);
+  margin: 0;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* ---- Home screen ---- */
+
+.home-top {
+  margin-top: 12vh;
+  text-align: center;
+}
+
+.home-tagline {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.home-actions {
+  margin-top: auto;
+  margin-bottom: 12vh;
+  padding: 0 24px;
+}
+
+/* ---- Stepper ---- */
+
+.stepper-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.stepper-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--crimson);
+  background: var(--beige);
+  color: var(--crimson);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.stepper-value {
+  min-width: 72px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.picker-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.picker-actions {
+  margin-top: auto;
+}
+
+/* ---- Name mode tiles ---- */
+
+.tile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.tile {
+  min-height: 80px;
+  width: 100%;
+  border-radius: var(--radius-card);
+  border: 2px solid transparent;
+  background: #fff;
+  text-align: left;
+  padding: 16px 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+.tile.selected {
+  border-color: var(--crimson);
+  background: var(--crimson-10);
+}
+
+.tile-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.tile-subtext {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ---- Name entry ---- */
+
+.name-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0;
+  padding-bottom: 8px;
+}
+
+.name-field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 6px;
+}
+
+.name-field-input {
+  width: 100%;
+  min-height: 48px;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--crimson-20);
+  background: #fff;
+  color: var(--text);
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.name-field-input:focus {
+  outline: none;
+  border-color: var(--crimson);
+}
+
+/* ---- Confirm identity ---- */
+
+.confirm-screen {
+  justify-content: center;
+}
+
+.confirm-name {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.confirm-hint {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.confirm-actions {
+  margin-top: 48px;
+  width: 100%;
+}
+
+/* ---- Card screen ---- */
+
+.card-screen {
+  justify-content: center;
+  align-items: center;
+}
+
+.card-perspective {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3 / 4;
+  perspective: 1000px;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card.is-face-up {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: var(--beige);
+  box-shadow: var(--shadow-card);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+.card-face--back {
+  transform: rotateY(180deg);
+}
+
+/* Reduced-motion: sequenced fade-out-then-fade-in instead of a 3D rotate.
+   The two faces must never both have nonzero opacity at the same time (that
+   would briefly superimpose the word/imposter face and the name face, which
+   is exactly the privacy leak the flip is meant to prevent). So the face
+   going away always fades out with zero delay, and the face coming in only
+   starts fading in *after* the other one has fully finished fading out
+   (150ms fade-out + a small gap before the 150ms fade-in begins) — never on
+   the same time window. */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card {
+    transition: none;
+    transform: none !important;
+  }
+  .card-face {
+    transition: opacity 150ms ease-in-out;
+  }
+  .card-face--front {
+    position: absolute;
+    inset: 0;
+  }
+  .card-face--back {
+    position: absolute;
+    inset: 0;
+    transform: none;
+  }
+
+  /* Face-down (front showing, back hidden): back is already faded out with
+     no delay; front fades back in only once the back is fully gone. */
+  .flip-card:not(.is-face-up) .card-face--back {
+    opacity: 0;
+    transition-delay: 0ms;
+    pointer-events: none;
+  }
+  .flip-card:not(.is-face-up) .card-face--front {
+    opacity: 1;
+    transition-delay: 170ms;
+  }
+
+  /* Face-up (back showing, front hidden): front fades out immediately;
+     back only fades in once the front is fully gone. */
+  .flip-card.is-face-up .card-face--front {
+    opacity: 0;
+    transition-delay: 0ms;
+    pointer-events: none;
+  }
+  .flip-card.is-face-up .card-face--back {
+    opacity: 1;
+    transition-delay: 170ms;
+  }
+}
+
+.card-face-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.card-player-name {
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--crimson);
+  margin: 0 0 8px;
+}
+
+.card-mascot-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-hint {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.card-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--crimson);
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.card-word-en {
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+}
+
+.card-word-bn {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  margin: 6px 0 0;
+}
+
+.card-divider {
+  border: none;
+  border-top: 1px solid var(--crimson-20);
+  margin: 20px 0;
+}
+
+.card-description {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--text);
+  margin: 0;
+}
+
+.card-imposter-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.card-imposter-message {
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+}
+
+.card-imposter-sub {
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+.card-actions {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- End screen ---- */
+
+.end-screen {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.end-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 16px 0 8px;
+}
+
+.end-subtext {
+  color: var(--text-muted);
+  margin: 0 0 40px;
+}
+
+.end-actions {
+  width: 100%;
+}
+
+/* ---- Utility ---- */
+
+.helper-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 12px;
+}
