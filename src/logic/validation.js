@@ -8,7 +8,7 @@
  */
 
 export const MIN_PLAYERS = 3;
-export const MAX_PLAYERS = 10;
+export const MAX_PLAYERS = 20;
 export const MAX_NAME_LENGTH = 20;
 
 export const VALIDATION_MESSAGES = {

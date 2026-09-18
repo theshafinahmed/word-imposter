@@ -32,19 +32,19 @@ Scope: 8-screen flow, card component, flip animation, native-app-feel restrictio
 
 ### Screen 2 — Player Count Picker
 
-**Purpose:** choose how many players (min 3, max 10 for v1).
+**Purpose:** choose how many players (min 3, max 20 for v1).
 
 **Layout:**
 - Header: "How many players?" (24px, bold, centered, top).
 - Stepper control, centered mid-screen: large `−` button, large numeral display (current count, 48px bold), large `+` button. Row is horizontally centered, generous spacing between the three elements (min 16px gaps), each tap target ≥48x48px.
 - Default value on entry: **3** (the minimum).
 - `−` button disabled (visually greyed, non-interactive) when count = 3.
-- `+` button disabled when count = 10.
-- Small helper text below stepper, muted: "Minimum 3, maximum 10 players."
+- `+` button disabled when count = 20.
+- Small helper text below stepper, muted: "Minimum 3, maximum 20 players."
 - Primary button at bottom: **"Next"** — always enabled once a value is showing (it always has a valid value by construction).
 - Back affordance: a simple back chevron/arrow top-left corner (crimson, 48x48 tap target) — standard on every screen from here except Home and End.
 
-**State:** holds `playerCount` (int, 3–10) in session state.
+**State:** holds `playerCount` (int, 3–20) in session state.
 
 **Navigation:** Back → Screen 1. "Next" → Screen 3.
 
@@ -243,5 +243,5 @@ Mascot does **not** appear on: Player Count, Imposter Count, Name Mode, Name Ent
 
 ## Design-team judgment calls (not sent to the user — documented so no one silently changes them)
 
-- Max player count capped at 10 for v1 — arbitrary but sane upper bound, not a product rule.
+- Max player count capped at 20 for v1 — arbitrary but sane upper bound, not a product rule.
 - Card background/shell is intentionally identical between the real-word and imposter states (Section 2, State C) to prevent inferring the imposter by card color alone from across the table. **Do not** give the imposter card a different tint later without checking back — it would quietly break the game's privacy model.
